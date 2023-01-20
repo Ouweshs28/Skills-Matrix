@@ -1,0 +1,69 @@
+<div class="container">
+  <mat-card class="card card-center">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Categories Management</div>
+        <div class="searchBarButtonContainer">
+          <div class="searchBarWithIcon">
+            <mat-form-field class="example-full-width searchBar">
+              <input (keyup)="onKeyUpEvent($event)" [(ngModel)]="searchCriteria" type="text" matInput
+                     placeholder="Search category"/>
+            </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix>search</mat-icon>
+            </button>
+          </div>
+          <div class="button-container">
+            <button class="addBtn buttons" mat-raised-button color="primary" routerLink="/create-category/">
+              <mat-icon class="buttonIcon addIcon">add</mat-icon>
+              <span>Category</span>
+            </button>
+            <button class="exportBtn buttons" mat-raised-button color="primary" (click)="exportToExcel()">
+              <mat-icon class="buttonIcon">cloud_download</mat-icon>
+              <span>Export</span>
+            </button>
+          </div>
+        </div>
+        <div class="table">
+          <table id="categoryTable" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+                 class="mat-elevation-z0">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categoryName">
+                Category Name
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by categoryDesription">
+                Category Description
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{ element.description }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="black" routerLink="/update-category/{{ element.id }}">
+                  <mat-icon matTooltip="My tooltip">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteConfirmation(element.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator class=".mat-paginator-sticky" [length]="totalElements" [pageSize]="pageSize"
+                         [pageSizeOptions]="[10, 15, 25, 50]" (page)="pageEvent = $event; onPaginateChange($event)">
+          </mat-paginator>
+        </div>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

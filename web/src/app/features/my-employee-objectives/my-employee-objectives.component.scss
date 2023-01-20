@@ -1,0 +1,178 @@
+
+.card {
+  width: 92vw;
+  height: 84vh;
+}
+
+.card-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.wrap {
+  width: 78vw;
+  height: 70vh;
+  margin-right: 0.25vw;
+}
+
+.searchBarButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.searchBar {
+  width: 30vw;
+}
+
+.filterSearch {
+  margin: 5px 5px;
+}
+
+.button-container {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  border-radius: 10px;
+  height: 5.5vh;
+  width: 10vw;
+  font-size: 16px;
+  font-family: "proxima-nova";
+}
+
+.assessBtn {
+  background-color: #272829;
+}
+
+.mat-icon.buttonIcon {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.assessIcon {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+#skillHistoryTable {
+  width: 78vw;
+  margin-top: 10px;
+}
+
+.mat-column-name,
+.mat-column-level {
+  width: 15%;
+}
+
+.mat-column-comments {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 15% !important;
+  width: 40% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding: 8px 8px 8px 8px !important;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+th.mat-header-cell {
+  color: black;
+  font-weight: bold;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+td.mat-cell {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.mat-cell,
+.mat-header-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-actions {
+  width: 8%;
+}
+
+.table {
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
+}
+
+th {
+  background-color: white;
+  position: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.text-title {
+  margin-top: 1.5vh;
+  font-size: 3.45vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+  margin-bottom: 1.5vh !important;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  margin-top: auto;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: rgb(255, 54, 22) !important;
+}

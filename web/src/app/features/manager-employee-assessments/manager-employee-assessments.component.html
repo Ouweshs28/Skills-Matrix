@@ -1,0 +1,162 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Skills Approval</div>
+        <div class="employee-list-delegate-container">
+          <div class="mat-select-container">
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Employee</mat-label>
+              <mat-select (selectionChange)="getEmployeeSelected($event)">
+                <input class="search-input" (keyup)="employeeNameOnKeyUp($event)"
+                       [ngModelOptions]="{standalone: true}" [(ngModel)]="searchEmployeeByName" matInput
+                       placeholder="Search...">
+                <mat-option *ngFor="let employee of managerEmployeesList" [value]="employee">
+                  {{employee.firstName | titlecase}}</mat-option>
+              </mat-select>
+              <mat-error>Choose an employee</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="button-container">
+            <button class="buttons delegateBtn" mat-raised-button color="primary"
+                    (click)="toggleDelegation()" disabled={{this.showDelegateButton}}>
+              <mat-icon class="buttonIcon assessIcon">{{ showDelegateOptions ? 'close' : 'person'}}
+              </mat-icon>
+              <span>{{ showDelegateOptions ? 'Hide' : 'Add Reviewers'}}</span>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="checkIfEmployeeIsValid" class="main-container">
+          <div *ngIf="showDelegateOptions" class="delegation-list-container">
+            <div class="mat-select-container">
+              <mat-form-field class="input" appearance="fill">
+                <mat-label>Reviewers</mat-label>
+                <mat-select [(ngModel)]="chosenReviewersForDelegation" multiple>
+                  <input class="search-input" (keyup)="reviewerNameOnKeyUp($event)"
+                         [ngModelOptions]="{standalone: true}" [(ngModel)]="searchReviewerByName"
+                         matInput placeholder="Search...">
+                  <mat-option *ngFor="let reviewer of futureReviewersList" [value]="reviewer.id">
+                    {{reviewer.firstName | titlecase}}</mat-option>
+                </mat-select>
+                <mat-error>Choose an employee</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="delegation-send-container">
+              <div class="button-container">
+                <button class="sendButton" mat-raised-button color="primary"
+                        [disabled]="chosenReviewersForDelegation.length==0" (click)="assignReviewers()">
+                  <mat-icon class="buttonIcon">send</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="table-tab-container">
+            <mat-tab-group class="remove-border-bottom" mat-align-tabs="end"
+                           (selectedTabChange)="tabClick($event)">
+              <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+                <div *ngIf="displayTableWithActions" class="table">
+                  <table id="skillHistoryTable" mat-table [dataSource]="dataSource" matSort
+                         (matSortChange)="sortData($event)" class="mat-elevation-z0">
+                    <ng-container matColumnDef="skillName">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                          sortActionDescription="Sort by skillName">
+                        Skill Name
+                      </th>
+                      <td mat-cell *matCellDef="let element">{{ element.skillName |titlecase}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="skillLevel">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                          sortActionDescription="Sort by skillLevel">
+                        Skill Level
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div style="word-wrap: break-word">
+                          {{ SkillLevelEnum[element.skillLevel]}}
+                        </div>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="comments">
+                      <th mat-header-cell *matHeaderCellDef>Comments</th>
+                      <td mat-cell *matCellDef="let element">
+                        <div style="word-wrap: break-word">
+                          {{ element.comments || "No comments"}}
+                        </div>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef>Actions</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button class="green-icon"
+                                (click)="approveSkill(element)">
+                          <mat-icon matTooltip="Approve">check</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn"
+                                (click)="deleteConfirmation(element.id)">
+                          <mat-icon matTooltip="Decline">clear</mat-icon>
+                        </button>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row
+                        *matHeaderRowDef="displayedColumnsForEmployeeToBeApproved; sticky:true">
+                    </tr>
+                    <tr mat-row
+                        *matRowDef="let row; columns: displayedColumnsForEmployeeToBeApproved"></tr>
+                  </table>
+                  <mat-paginator [length]="totalElements" [pageSize]="pageSize"
+                                 [pageSizeOptions]="[10, 15, 25, 50]"
+                                 (page)="pageEvent = $event; onPaginateChange($event)">
+                  </mat-paginator>
+                </div>
+                <div *ngIf="displayTableWithNoActions" class="table">
+                  <table id="skillHistoryTable" mat-table [dataSource]="dataSource" matSort
+                         (matSortChange)="sortData($event)" class="mat-elevation-z0">
+                    <ng-container matColumnDef="skillName">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                          sortActionDescription="Sort by skillName">
+                        Skill Name
+                      </th>
+                      <td mat-cell *matCellDef="let element">{{ element.skillName |titlecase}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="skillLevel">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header
+                          sortActionDescription="Sort by skillLevel">
+                        Skill Level
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div style="word-wrap: break-word">
+                          {{ SkillLevelEnum[element.skillLevel]}}
+                        </div>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="NoActionscomments">
+                      <th mat-header-cell *matHeaderCellDef>Comments</th>
+                      <td mat-cell *matCellDef="let element">
+                        <div style="word-wrap: break-word">
+                          {{ element.comments || "No comments"}}
+                        </div>
+                      </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                  </table>
+                  <mat-paginator [length]="totalElements" [pageSize]="pageSize"
+                                 [pageSizeOptions]="[10, 15, 25, 50]"
+                                 (page)="pageEvent = $event; onPaginateChange($event)">
+                  </mat-paginator>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+        <div *ngIf="!checkIfEmployeeIsValid" class="error-image-container">
+          <img class="card-image card-center" src="../../../assets/images/no-data.svg" alt="skill image"/>
+          <p class="heading-two-bold paragraph-text">Please select an employee to assess</p>
+        </div>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

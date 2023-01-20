@@ -1,0 +1,16 @@
+package com.skillsmatrix.dto;
+
+import lombok.Data;
+
+/**
+ * @author zaf
+ */
+@Data
+public class EmployeeDomainResponse {
+
+    private Long id;
+    private String name;
+    private String description;
+    private Boolean archived;
+
+}

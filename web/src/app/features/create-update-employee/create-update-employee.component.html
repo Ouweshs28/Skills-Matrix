@@ -1,0 +1,149 @@
+<mat-card class="card card-center">
+  <div class="card-row card-max-height">
+    <div class="accent-border-left"></div>
+    <div class="card-column">
+      <div class="text-title">{{title}}</div>
+      <img
+        class="card-image card-center"
+        src="../../../assets/images/profile.svg"
+        alt="test-invite"
+      />
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="card-column right">
+      <form
+        [formGroup]="employeeAdditionForm"
+        novalidate
+        class="input-form"
+        (ngSubmit)="checkOperationType()"
+      >
+        <table class="card-table">
+          <td vAlign="top">
+            <table>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>First Name</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="employee.firstName" name="employee.firstName"
+                         formControlName="firstName"/>
+                  <mat-error *ngIf="employeeAdditionForm.invalid">First Name is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="employee.lastName" name="employee.lastName"
+                         formControlName="lastName"/>
+                  <mat-error *ngIf="employeeAdditionForm.invalid">Last Name is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select [(ngModel)]="employee.gender" name="employee.gender"
+                              formControlName="gender">
+                    <mat-option
+                      *ngFor="let gender of genderList"
+                      [value]="gender"
+                    >{{ gender| titlecase }}</mat-option
+                    >
+                  </mat-select>
+                  <mat-error *ngIf="employeeAdditionForm.invalid">Gender is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="employee.email" name="employee.email"
+                         formControlName="email"/>
+                  <mat-error *ngIf="employeeAdditionForm.invalid">Email is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <div class="rightAlign">
+                <tr>
+                  <mat-form-field class=" input
+              " appearance="fill">
+                    <mat-label>Factory</mat-label>
+                    <mat-select [(ngModel)]="employee.factory" name="employee.factory"
+                                formControlName="factory">
+                      <mat-option
+                        *ngFor="let factory of factoryList"
+                        [value]="factory"
+                      >{{ factory| titlecase }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error *ngIf="employeeAdditionForm.invalid">Factory is required</mat-error>
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field class="input" appearance="fill">
+                    <mat-label>Position</mat-label>
+                    <mat-select [(ngModel)]="employee.position" name="employee.position"
+                                formControlName="position">
+                      <mat-option
+                        *ngFor="let position of positionList"
+                        [value]="position.enumName"
+                      >{{ position }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error *ngIf="employeeAdditionForm.invalid">Position is required</mat-error>
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field class="input" appearance="fill">
+                    <mat-label>Manager</mat-label>
+                    <mat-select [(ngModel)]="employee.managerId"
+                                name="employee.manager"
+
+                                formControlName="manager">
+
+                      <input class="search-input" (keyup)="getManagers(searchManagersCrtieria)"
+                             [ngModelOptions]="{standalone: true}"
+                             [(ngModel)]="searchManagersCrtieria" matInput placeholder="Search a manager">
+                      <mat-option
+                        *ngFor="let manager of managerList"
+                        [value]="manager.id"
+                      >{{ manager.firstName + " " + manager.lastName }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="employeeAdditionForm.invalid">Position is required</mat-error>
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field *ngIf="isUpdate" class="input" appearance="fill">
+                    <mat-label>Domain</mat-label>
+                    <mat-select [(ngModel)]="employee.employeeDomainId" name="employee.employeeDomainId"
+                                formControlName="employeeDomainId">
+                      <mat-option
+                        *ngFor="let domain of employeeDomainList"
+                        [value]="domain.id"
+                      >{{ domain.name }}</mat-option
+                      >
+                    </mat-select>
+                    <mat-error *ngIf="employeeAdditionForm.invalid">Position is required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field *ngIf="!isUpdate" class="input" appearance="fill">
+                    <mat-label>Visa</mat-label>
+                    <input matInput placeholder="" [(ngModel)]="employee.visa" name="employee.visa"
+                           formControlName="visa"/>
+                    <mat-error *ngIf="employeeAdditionForm.invalid">Visa is required</mat-error>
+                  </mat-form-field>
+                </tr>
+              </div>
+            </table>
+          </td>
+        </table>
+
+        <div class="button-container">
+          <button mat-flat-button class="button row-center closeBtn" color="primary" routerLink="/dashboard">
+            Cancel
+          </button>
+          <button mat-flat-button class="button row-center" color="primary" type="submit"
+                  [disabled]='employeeAdditionForm.invalid'>
+            {{buttonName}}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>

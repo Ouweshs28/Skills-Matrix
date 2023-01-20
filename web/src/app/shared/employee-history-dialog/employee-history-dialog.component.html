@@ -1,0 +1,58 @@
+<span mat-dialog-title class=".heading-two-bold">{{ skillName | titlecase }}{{" " }} Skill Overview<button
+  class="close-button" [mat-dialog-close]="false"><mat-icon>close</mat-icon></button></span>
+<div mat-dialog-content>
+  <mat-tab-group class="remove-border-bottom" mat-align-tabs="start" (selectedTabChange)="tabClick($event)">
+    <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+      <div *ngIf="data.content.length==0">
+        <table id="historyTable">
+          <tr>
+            <td id="headingNoData">No data available</td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="data.content.length>0 && selectedTabStatus=='History'">
+        <table id="historyTable" mat-table
+               [dataSource]="data.content"
+               class="mat-elevation-z0">
+          <ng-container matColumnDef="skillLevel">
+            <th mat-header-cell *matHeaderCellDef>Level</th>
+            <td mat-cell *matCellDef="let element"> {{SkillLevelEnum[element.skillLevel] }} </td>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element"> {{element.status | titlecase}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="historyColumns; sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: historyColumns;"></tr>
+        </table>
+      </div>
+      <div *ngIf="data.content.length>0 && selectedTabStatus=='Objectives'">
+        <table id="objectiveTable" mat-table
+               [dataSource]="data.content"
+               class="mat-elevation-z0">
+          <ng-container matColumnDef="currentSkillLevel">
+            <th mat-header-cell *matHeaderCellDef>Current Level</th>
+            <td mat-cell *matCellDef="let element"> {{SkillLevelEnum[element.currentSkillLevel] }} </td>
+          </ng-container>
+          <ng-container matColumnDef="targetSkillLevel">
+            <th mat-header-cell *matHeaderCellDef>Target Level</th>
+            <td mat-cell *matCellDef="let element"> {{SkillLevelEnum[element.targetSkillLevel] }} </td>
+          </ng-container>
+          <ng-container matColumnDef="targetDate">
+            <th mat-header-cell *matHeaderCellDef>Target Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.targetDate  |  date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element"> {{element.status | titlecase}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="objectivesColumns; sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: objectivesColumns;"></tr>
+        </table>
+      </div>
+      <div *ngIf="selectedTabStatus=='Documents'">
+        <p>TO DO VIEW DOCUMENTS</p>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

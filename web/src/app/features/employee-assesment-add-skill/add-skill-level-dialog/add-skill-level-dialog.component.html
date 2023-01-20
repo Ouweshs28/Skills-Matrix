@@ -1,0 +1,16 @@
+<div class="title-bar">
+  <span mat-dialog-title class=".heading-two-bold">Skill Level<button class="close-button"
+                                                                      (click)="onNoClick()"><mat-icon>close</mat-icon></button></span>
+</div>
+<mat-label class="mat-typography">
+  <button [ngStyle]="{'background-color':data.skillHistory.skillLevel === skillLevel.enumName ? 'green' : ''}"
+          class="addBtn buttons"
+          (click)="addSkill(skillLevel.enumName)"
+          *ngFor="let skillLevel of skillLevelList"
+          mat-button
+          [mat-dialog-close]="data"
+          cdkFocusInitial>{{skillLevel.label| titlecase }}</button>
+</mat-label><br><br>
+<mat-dialog-actions>
+  <button mat-button class="buttons cancelBtn" (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,41 @@
+.form-container {
+  width: 85vw;
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.form-container-inputs {
+  width: 82vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-container-deleteBtn {
+  width: 3vw;
+}
+
+.search-input {
+  height: 50px;
+  padding-left: 8px;
+  padding: auto;
+  width: 95%;
+  overflow-x: hidden !important;
+}
+
+.input {
+  width: 13vw;
+}
+
+::ng-deep .mat-select-panel {
+  min-height: 15vh !important;
+}
+
+::ng-deep .mat-select-trigger {
+  min-height: 2vh;
+}
+
+.text-input {
+  width: 25vw;
+}

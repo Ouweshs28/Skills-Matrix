@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  mail:
+    host: localhost
+    port: 1025
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  profiles:
+    active: dev
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          client-id: ${OAUTH2_CLIENT_ID}
+          jwk-set-uri: ${OAUTH2_JWK_URI}
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    org.apache.catalina: DEBUG
+
+application:
+  security:
+    cross-origin:
+      frontend-host: ${FRONTEND_HOST}

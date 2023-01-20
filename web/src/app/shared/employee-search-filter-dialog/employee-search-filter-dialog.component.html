@@ -1,0 +1,72 @@
+<div class="filterContainer">
+  <mat-form-field appearance="outline" style="margin: 10px 10px;">
+    <mat-label>Factory</mat-label>
+    <mat-select [(ngModel)]="factoryValue" (selectionChange)="updateFilterBtn()">
+      <mat-option
+        *ngFor="let factory of factoryList"
+        [value]="factory"
+      >{{ factory| titlecase }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="margin: 10px 10px;">
+    <mat-label>Domain</mat-label>
+    <mat-select [compareWith]="compareObjects" [(ngModel)]="domains" multiple (selectionChange)="updateFilterBtn()">
+      <mat-option
+        *ngFor="let domain of employeeDomainList"
+        [value]="domain">{{ domain.name | titlecase }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div style="float: right">
+    <button class="closeBtn buttons" mat-raised-button color="primary" (click)="OnResetFilters()">
+      <mat-icon class="buttonIcon addIcon">close</mat-icon>
+      <span>Clear</span>
+    </button>
+    <button mat-button class="buttons addBtn"
+            (click)="openDialog('Add',{ id: null,name: '',level: '',existingData:dataSource })"
+            mat-flat-button color="primary">Add Skill & Level
+    </button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="my-table mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Skill Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef>Level</th>
+      <td mat-cell *matCellDef="let element"> {{SkillLevelEnum[element.level]}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      <td mat-cell *matCellDef="let element" class="action-link">
+        <button
+          (click)="openDialog('Update',{ id: element.id,name: element.name,level: element.level,existingData:dataSource })"
+          mat-icon-button color="black"
+          matTooltip="edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (click)="openDialog('Delete',element)"
+          mat-icon-button color="black"
+          matTooltip="delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button class="buttons addBtn" style="color: white"
+            (click)="sendFilterData()">{{hasData ? 'Apply Filter' : 'Close'}}</button>
+  </div>
+</div>

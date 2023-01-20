@@ -1,0 +1,82 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Update Skill Assessment</div>
+        <form [formGroup]="updateAssessmentSkill" novalidate>
+          <div class="form">
+            <div class="form-container">
+              <div class="column-left">
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Name</mat-label>
+                  <input matInput placeholder="" [(ngModel)]=skillName formControlName="skillName" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field class="text-input" appearance="fill">
+                  <mat-label>Skill Description</mat-label>
+                  <textarea class="text-input" matInput rows="4" style="resize: none" placeholder=""
+                            [(ngModel)]="skillDescription" [disabled]="true"
+                            formControlName="skillDescription"></textarea>
+                  <mat-error>Skill description is required</mat-error>
+                </mat-form-field>
+              </div>
+              <span class="spacer"></span>
+              <div class="column-right">
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Level</mat-label>
+                  <mat-select [(ngModel)]="this.skillLevelValue" formControlName="skillLevel">
+                    <mat-option *ngFor="let skillLevel of skillLevelList" [value]="skillLevel.enumName">{{
+                      skillLevel.label|
+                        titlecase }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Category</mat-label>
+                  <input matInput placeholder="" [(ngModel)]=skillCategory formControlName="skillCategory">
+                </mat-form-field>
+
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Domain</mat-label>
+                  <input matInput placeholder="" [(ngModel)]=skillDomain formControlName="skillDomain">
+                </mat-form-field>
+              </div>
+
+
+            </div>
+
+            <div class="comments">
+
+              <mat-form-field class="text-input" appearance="fill">
+                <mat-label>Comments<i>(Optional)</i></mat-label>
+                <textarea class="text-input" matInput rows="4" style="resize: none" placeholder=""
+                          [(ngModel)]="skillComments" formControlName="skillComments"></textarea>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+
+
+          <div class="button-container">
+            <button mat-flat-button class="button row-center" (click)="back()">Cancel</button>
+            <button mat-flat-button class="button row-center" color="primary" type="submit"
+                    [disabled]='updateAssessmentSkill.invalid' (click)="submitSkillHistoryRecord()">Submit
+            </button>
+          </div>
+
+
+        </form>
+
+
+      </div>
+
+
+      <div class="accent-border-right"></div>
+    </div>
+
+
+  </mat-card>
+
+</div>

@@ -1,0 +1,40 @@
+POST {{host}}/api/user
+Content-Type: application/json
+
+{
+  "gender": "MALE"
+}
+
+### Get Authorization Code
+GET {{keycloak}}/auth/realms/skills-matrix/protocol/openid-connect/auth?response_type=code&
+    client_id=client-skills-matrix&redirect_uri=http://localhost:4200&
+    code_challenge=qXPygOl2hWwgvYd0Ayu6A6uRQEuKxeT5X5gRGZIK2_c&code_challenge_method=S256
+
+### Request Access Token
+POST {{keycloak}}/auth/realms/skills-matrix/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code_verifier=GxSHnxtqdWIQgEHBu17lIuKQrWyes3BcbVLVFt8vnYU&redirect_uri=http://localhost:4200&client_id=client-skills-matrix&code=b4182ad6-0d87-4586-8f33-544080dbd90b.19844617-196b-495e-90a0-928c231ce42d.64c24f9d-ce75-4b39-b1fc-1f449c84c394
+
+> {%
+    client.global.set("refresh_token", response.body.refresh_token)
+%}
+
+### Refresh Access Token
+POST {{keycloak}}/auth/realms/skills-matrix/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=client-skills-matrix&grant_type=refresh_token&refresh_token={{refresh_token}}
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+    client.global.set("refresh_token", response.body.refresh_token);
+%}
+
+### Access secured endpoint
+GET {{host}}/api/user
+Authorization: Bearer {{access_token}}
+
+### Access secured endpoint with role
+GET {{host}}/api/user/admin
+Authorization: Bearer {{access_token}}

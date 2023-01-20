@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'proxima-nova';
+}
+
+.heading-one-bold {
+  font-family: 'proxima-nova-bold';
+  font-size: 32.0px;
+}
+
+.heading-two-bold {
+  font-family: 'proxima-nova-bold';
+  font-size: 26.0px;
+}
+
+.heading-three-bold {
+  font-family: 'proxima-nova-bold';
+  font-size: 20.0px;
+}
+
+.heading-four-bold {
+  font-family: 'proxima-nova-bold';
+  font-size: 16.0px;
+}
+
+.heading-one {
+  font-family: 'proxima-nova';
+  font-size: 32.0px;
+}
+
+.heading-two {
+  font-family: 'proxima-nova';
+  font-size: 26.0px;
+}
+
+.heading-three {
+  font-family: 'proxima-nova';
+  font-size: 20.0px;
+}
+
+.heading-four {
+  font-family: 'proxima-nova';
+  font-size: 16.0px;
+}
+
+.heading-one-thin {
+  font-family: 'proxima-nova-thin';
+  font-size: 32.0px;
+}
+
+.heading-two-thin {
+  font-family: 'proxima-nova-thin';
+  font-size: 26.0px;
+}
+
+.heading-three-thin {
+  font-family: 'proxima-nova-thin';
+  font-size: 20.0px;
+}
+
+.heading-four-thin {
+  font-family: 'proxima-nova-thin';
+  font-size: 16.0px;
+}
+
+.heading-five-thin {
+  font-family: 'proxima-nova-thin';
+  font-size: 14.0px;
+}
+
+@font-face {
+  font-family: proxima-nova;
+  src: url("/assets/fonts/ProximaNova-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: proxima-nova-thin;
+  src: url("/assets/fonts/Proxima Nova Thin.otf");
+}
+
+
+@font-face {
+  font-family: proxima-nova-bold;
+  src: url("/assets/fonts/Proxima Nova Bold.otf");
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: none !important;
+}

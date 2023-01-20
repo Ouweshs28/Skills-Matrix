@@ -1,0 +1,141 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">{{ employeePage ? 'My Skills' : employeeName}}</div>
+        <div class="searchBarButtonContainer">
+          <div class="searchBarWithIcon">
+            <mat-form-field class="example-full-width searchBar">
+              <input (keyup)="searchSkill()" [(ngModel)]="searchCriteria" type="text" matInput
+                     placeholder="Search skill"/>
+            </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix>search</mat-icon>
+            </button>
+          </div>
+          <div class="button-container">
+            <button class="addBtn buttons" mat-raised-button color="primary" (click)="doAction()">
+              <mat-icon class="buttonIcon addIcon">{{ employeePage ? 'add' : 'arrow_back'}}</mat-icon>
+              <span>{{ employeePage ? 'Skills' : 'Back'}}</span>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!employeePage" class="table">
+          <table id="skillTable" mat-table [dataSource]="employeeSkills" matSort (matSortChange)="sortData($event)"
+                 class="mat-elevation-z0">
+            <ng-container matColumnDef="skill.name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillName">
+                Skill Name
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.skill.name |titlecase }}</td>
+            </ng-container>
+            <ng-container matColumnDef="skill.description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillDescription">
+                Skill Description
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{ element.skill.description }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skillLevel">
+              <th mat-header-cell *matHeaderCellDef>Current Level</th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{SkillLevelEnum[element.skillLevel]}}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skill.skillCategory.name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+                Category
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.skill.skillCategory.name | titlecase }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skill.employeeDomain.name">
+              <th mat-header-cell *matHeaderCellDef>Domain</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.skill.employeeDomain.name }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="targetDate">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="black" (click)="getEmployeeSkillHistoryData(element)">
+                  <mat-icon matTooltip="View record">remove_red_eye</mat-icon>
+                </button>
+                <button *ngIf="showTargetutton" mat-icon-button color="black"
+                        (click)="openTargetDialog(element)">
+                  <mat-icon
+                    matTooltip="{{ element.currentObjectiveId ? 'update target' : 'set target'}}">{{ element.currentObjectiveId ? 'update' : 'date_range'}}</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator #paginator [length]="totalElements" [pageSize]="pageSize"
+                         (page)="pageEvent = $event; onPaginateChange($event)" [pageSizeOptions]="[5, 10, 25, 100]"
+                         aria-label="Select page"
+                         class="mat-paginator-sticky">
+          </mat-paginator>
+        </div>
+        <div *ngIf="employeePage" class="table">
+          <table id="skillTable" mat-table [dataSource]="employeeSkills" matSort (matSortChange)="sortData($event)"
+                 class="mat-elevation-z0">
+            <ng-container matColumnDef="skill.name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillName">
+                Skill Name
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.skill.name |titlecase }}</td>
+            </ng-container>
+            <ng-container matColumnDef="skill.description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillDescription">
+                Skill Description
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{ element.skill.description }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skillLevel">
+              <th mat-header-cell *matHeaderCellDef>Current Level</th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{SkillLevelEnum[element.skillLevel]}}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skill.skillCategory.name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+                Category
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.skill.skillCategory.name | titlecase }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skill.employeeDomain.name">
+              <th mat-header-cell *matHeaderCellDef>Domain</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.skill.employeeDomain.name }}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator #paginator [length]="totalElements" [pageSize]="pageSize"
+                         (page)="pageEvent = $event; onPaginateChange($event)" [pageSizeOptions]="[5, 10, 25, 100]"
+                         aria-label="Select page"
+                         class="mat-paginator-sticky">
+          </mat-paginator>
+        </div>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

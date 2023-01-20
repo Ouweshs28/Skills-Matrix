@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>{{action}} Skill & Level Filter</h1>
+<form
+  [formGroup]="skillLevelAdditionForm"
+  novalidate
+  (ngSubmit)="doAction()"
+>
+  <div mat-dialog-content>
+    <div *ngIf="action != 'Delete'; else elseTemplate">
+      <mat-form-field appearance="outline" style="margin: 10px 10px">
+        <mat-label>Skills</mat-label>
+        <mat-select [compareWith]="compareObjects" [(ngModel)]="skill"
+                    formControlName="skill">
+          <input class="search-input" (keyup)="skillOnKey($event)" [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="searchSkillCrtieria" matInput>
+          <mat-option *ngFor="let skill of skillsList"
+                      [value]="{id:skill.id, name:skill.name}">{{skill.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="skillLevelAdditionForm.invalid">Level is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin: 10px 10px">
+        <mat-label>Skill Level</mat-label>
+        <mat-select [(ngModel)]="level" formControlName="level">
+          <mat-option
+            *ngFor="let skillLevel of skillLevelList"
+            [value]="skillLevel.enumName"
+          >{{ skillLevel.label }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="skillLevelAdditionForm.invalid">Level is required</mat-error>
+      </mat-form-field>
+    </div>
+    <ng-template #elseTemplate>
+      Sure to delete <b>{{local_data.name}}</b>?
+    </ng-template>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button style="color: white" mat-button class="buttons addBtn" type="submit"
+            [disabled]='skillLevelAdditionForm.invalid'>{{action}}</button>
+    <button mat-button class="buttons closeBtn" (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  </div>
+</form>

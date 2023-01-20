@@ -1,0 +1,90 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Employee Skill History</div>
+        <div class="searchBarButtonContainer">
+          <div class="searchBarWithIcon">
+            <mat-form-field class="example-full-width searchBar">
+              <input (keyup)="onKeyUpEvent($event)" [(ngModel)]="searchCriteria"
+                     type="text" matInput placeholder="Search skill"/>
+            </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix>search</mat-icon>
+            </button>
+          </div>
+          <div class="button-container">
+            <button class="assessBtn buttons" mat-raised-button color="primary" routerLink="/addEmployeeAssessment">
+              <mat-icon class="buttonIcon assessIcon">assignment</mat-icon>
+              <span>Add skill</span>
+            </button>
+          </div>
+        </div>
+        <mat-tab-group class="remove-border-bottom" mat-align-tabs="end" (selectedTabChange)="tabClick($event)">
+          <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+            <div class="table">
+              <table id="skillHistoryTable" mat-table [dataSource]="dataSource" matSort
+                     (matSortChange)="sortData($event)" class="mat-elevation-z0">
+                <ng-container matColumnDef="skill.name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillName">
+                    Skill Name
+                  </th>
+                  <td mat-cell *matCellDef="let element">{{ element.skillName |titlecase}}</td>
+                </ng-container>
+                <ng-container matColumnDef="skillLevel">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillLevel">
+                    Skill Level
+                  </th>
+                  <td mat-cell *matCellDef="let element">
+                    <div style="word-wrap: break-word">
+                      {{ SkillLevelEnum[element.skillLevel]}}
+                    </div>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="comments">
+                  <th mat-header-cell *matHeaderCellDef>Comments</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div style="word-wrap: break-word">
+                      {{ element.comments || "No comments have been provided yet"}}
+                    </div>
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>Actions</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button *ngIf="StatusEnum[element.status]=='APPROVED'" mat-icon-button color="black"
+                            (click)="navigateToUpdateComponent(element)"
+                            matTooltip="re evaluate">
+                      <mat-icon>update</mat-icon>
+                    </button>
+                    <button *ngIf="StatusEnum[element.status]=='APPROVED'" mat-icon-button color="black"
+                            matTooltip="my documents">
+                      <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <button *ngIf="StatusEnum[element.status]=='PENDING'"
+                            mat-icon-button color="black"
+                            (click)="navigateToUpdateComponent(element)"
+                            matTooltip="edit">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button *ngIf="StatusEnum[element.status]=='PENDING'"
+                            mat-icon-button color="black" (click)="deleteConfirmation(element.id)" matTooltip="delete">
+                      <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              </table>
+              <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[10, 15, 25, 50]"
+                             (page)="pageEvent = $event; onPaginateChange($event)">
+              </mat-paginator>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

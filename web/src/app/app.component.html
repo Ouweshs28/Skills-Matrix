@@ -1,0 +1,110 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+  <img class="toolbar-logo" src="../assets/images/skills-matrix.png"/>
+  <div class="heading-two-bold">Skill Matrix</div>
+  <span class="example-fill-remaining-space"></span>
+  <div>
+    <ul class="row m-0 align-items-center">
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <span class="heading-five-thin">{{user.name}}</span>
+          <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/update-employee/">
+            <mat-icon>person</mat-icon>
+            Profile
+          </button>
+          <button mat-menu-item (click)="logUserOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <h5 class="heading-three mt-2">{{user.name}}</h5>
+    <span class="heading-four-thin ngt-10 ">{{PostionEnum[user.position]}}</span>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/dashboard" (click)="sidenav.toggle()">
+      <mat-icon>home</mat-icon>
+      <span>Dashboard</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/my-skills" (click)="sidenav.toggle()">
+      <mat-icon>person</mat-icon>
+      <span>My Skills</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/skills/objective" (click)="sidenav.toggle()">
+      <mat-icon>info</mat-icon>
+      <span>My Objectives</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/employeeAssessment" (click)="sidenav.toggle()">
+      <mat-icon>assignment</mat-icon>
+      <span>My Skill History</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/reviewerAssessment" (click)="sidenav.toggle()">
+      <mat-icon>rate_review</mat-icon>
+      <span>Review Employee</span>
+    </button>
+    <mat-divider *ngIf="user.role=='MANAGER' || user.role=='ADMINISTRATOR'"></mat-divider>
+    <button *ngIf="user.role=='MANAGER' || user.role=='ADMINISTRATOR'" mat-button class="menu-button"
+            routerLink="managerAssessmentsReview"
+            (click)="sidenav.toggle()">
+      <mat-icon>assignment_return</mat-icon>
+      <span>Employee Assessment</span>
+    </button>
+    <button *ngIf="user.role=='MANAGER' || user.role=='ADMINISTRATOR'" mat-button class="menu-button"
+            routerLink="employees/skills/objective" (click)="sidenav.toggle()">
+      <mat-icon>assignment_ind</mat-icon>
+      <span>Employee Objectives</span>
+    </button>
+    <button *ngIf="user.role=='MANAGER' || user.role=='ADMINISTRATOR'" mat-button class="menu-button"
+            routerLink="/searchEmployeeSkills"
+            (click)="sidenav.toggle()">
+      <mat-icon>search</mat-icon>
+      <span>Search Skillset</span>
+    </button>
+    <button *ngIf="user.role=='MANAGER' || user.role=='ADMINISTRATOR'" mat-button class="menu-button"
+            routerLink="/trackProgress"
+            (click)="sidenav.toggle()">
+      <mat-icon>assessment</mat-icon>
+      <span>Track Progress</span>
+    </button>
+    <mat-divider *ngIf="user.role=='ADMINISTRATOR'"></mat-divider>
+    <button *ngIf="user.role=='ADMINISTRATOR'" mat-button class="menu-button" routerLink="/register-employee"
+            (click)="sidenav.toggle()">
+      <mat-icon>list</mat-icon>
+      <span>Employee</span>
+    </button>
+    <button *ngIf="user.role=='ADMINISTRATOR'" mat-button class="menu-button" routerLink="/categories"
+            (click)="sidenav.toggle()">
+      <mat-icon>list</mat-icon>
+      <span>Categories</span>
+    </button>
+    <button *ngIf="user.role=='ADMINISTRATOR'" mat-button class="menu-button" routerLink="/domains"
+            (click)="sidenav.toggle()">
+      <mat-icon>list</mat-icon>
+      <span>Domains</span>
+    </button>
+    <button *ngIf="user.role=='ADMINISTRATOR'" mat-button class="menu-button" routerLink="/skills"
+            (click)="sidenav.toggle()">
+      <mat-icon>list</mat-icon>
+      <span>Skills</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

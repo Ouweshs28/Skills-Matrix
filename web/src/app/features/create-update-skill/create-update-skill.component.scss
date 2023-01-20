@@ -1,0 +1,125 @@
+.card {
+  width: 80vw;
+  height: 65vh;
+}
+
+.card-row {
+  display: flex;
+}
+
+.card-column {
+  flex: 50%;
+}
+
+.card-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-max-height {
+  height: 100%;
+}
+
+.input-headline {
+  font-family: "proxima-nova";
+}
+
+.card-image {
+  width: 16vw;
+  margin-top: 4vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-title {
+  margin-top: 3vh;
+  margin-left: 2.5vw;
+  font-size: 3.45vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+  margin-bottom: 40px;
+}
+
+.text-subtitle {
+  font-size: 2.8vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+}
+
+.button-container {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  min-height: 30vw;
+  padding-top: 10px;
+}
+
+.button {
+  background-color: #272829;
+  color: white;
+  border-radius: 5px;
+  height: 6vh;
+  font-family: "proxima-nova";
+  margin-left: 1vw !important;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  margin-top: auto;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+}
+
+.card-margin {
+  margin-left: 130px;
+}
+
+.input {
+  width: 17vw;
+  height: 90px;
+  font-family: "proxima-nova";
+  margin-top: 3px;
+}
+
+.text-input {
+  width: 18vw;
+  height: 22vh;
+}
+
+.right {
+  padding-top: 5vh;
+  margin-left: 5vw;
+  flex: 70%;
+}
+
+.card-table {
+  min-width: 97%;
+  margin-right: 5px;
+}
+
+.row-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row-width {
+  width: 100% !important;
+}
+
+body {
+  overflow: hidden !important;
+}
+
+.closeBtn {
+  background-color: red;
+}

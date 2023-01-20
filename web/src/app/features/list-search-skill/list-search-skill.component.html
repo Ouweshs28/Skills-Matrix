@@ -1,0 +1,91 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Skills Management</div>
+        <div class="searchBarButtonContainer">
+          <div class="searchBarWithIcon">
+            <mat-form-field class="example-full-width searchBar">
+              <input (keyup)="onKeyupEvent($event)" [(ngModel)]="searchCriteria" type="text" matInput
+                     placeholder="Search skill"/>
+            </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix>search</mat-icon>
+            </button>
+          </div>
+          <div class="button-container">
+            <button class="addBtn buttons" mat-raised-button color="primary" routerLink="/create-skill/">
+              <mat-icon class="buttonIcon addIcon">add</mat-icon>
+              <span>Skill</span>
+            </button>
+            <button class="exportBtn buttons" mat-raised-button color="primary" (click)="exportToExcel()">
+              <mat-icon class="buttonIcon">cloud_download</mat-icon>
+              <span>Export</span>
+            </button>
+          </div>
+        </div>
+        <div class="table">
+          <table id="skillTable" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+                 class="mat-elevation-z0">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillName">
+                Skill Name
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.name |titlecase }}</td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by skillDescription">
+                Skill Description
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{ element.description }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="levelRequirements">
+              <th mat-header-cell *matHeaderCellDef>Level Requirement</th>
+              <td mat-cell *matCellDef="let element">
+                <div style="word-wrap: break-word">
+                  {{ element.levelRequirements }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skillCategory">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category">
+                Category
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.skillCategory.name | titlecase }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="skillDomain">
+              <th mat-header-cell *matHeaderCellDef>Domain</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.employeeDomain.name }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Actions</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="black" routerLink="/update-skill/{{ element.id }}">
+                  <mat-icon matTooltip="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteConfirmation(element.id)">
+                  <mat-icon matTooltip="Delete">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator class=".mat-paginator-sticky" [length]="totalElements" [pageSize]="pageSize"
+                         [pageSizeOptions]="[10, 15, 25, 50]" (page)="pageEvent = $event; onPaginateChange($event)">
+          </mat-paginator>
+        </div>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

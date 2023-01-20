@@ -1,0 +1,16 @@
+<div class="title-bar">
+  <span mat-dialog-title class=".heading-two-bold">Decline skill assessment<button class="close-button"
+                                                                                   (click)="onNoClick()"><mat-icon>close</mat-icon></button></span>
+</div>
+<mat-label class="mat-typography">
+  <mat-form-field class="text-input" appearance="fill">
+    <mat-label>Please add comments to support your declinature<i>(Optional)</i></mat-label>
+    <textarea class="text-input" [(ngModel)]="data.comments" matInput rows="4" style="resize: none" placeholder=""
+    ></textarea>
+  </mat-form-field>
+</mat-label><br><br>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial class="delete-btn">Confirm</button>
+</mat-dialog-actions>
+

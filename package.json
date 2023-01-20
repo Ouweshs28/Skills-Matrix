@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "ngx-mat-select-search": "^3.3.2",
+    "ngx-toastr": "^14.1.4",
+    "toastr": "^2.1.4"
+  }
+}

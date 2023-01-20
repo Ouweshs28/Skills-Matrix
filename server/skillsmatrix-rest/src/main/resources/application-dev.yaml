@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/skills-matrix
+
+OAUTH2_CLIENT_ID: client-skills-matrix
+OAUTH2_JWK_URI: http://localhost:9005/auth/realms/skills-matrix/protocol/openid-connect/certs
+
+FRONTEND_HOST: http://localhost:4200

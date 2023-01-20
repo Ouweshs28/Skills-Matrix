@@ -1,0 +1,38 @@
+<mat-card class="card card-center">
+  <div class="card-row card-max-height">
+    <div class="accent-border-left"></div>
+    <div class="card-column">
+      <div class="text-title">{{ title }}</div>
+      <img class="card-image card-center" src="../../../assets/images/add-update-domain.svg" alt="category image"/>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="card-column right">
+      <form [formGroup]="categoryAdditionUpdateForm" novalidate class="input-form" (ngSubmit)="checkOperationType()">
+        <td vAlign="top">
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>Category Name</mat-label>
+            <input matInput placeholder="" [(ngModel)]="category.name" name="category.name"
+                   formControlName="categoryName"/>
+            <mat-error>Category name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="text-input" appearance="fill">
+            <mat-label>Category Description</mat-label>
+            <textarea matInput rows="4" style="resize: none" placeholder="" name="category.description"
+                      [(ngModel)]="category.description" name="category.description"
+                      formControlName="categoryDescription"></textarea>
+            <mat-error *ngIf="categoryAdditionUpdateForm.invalid">Category description is required</mat-error>
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-flat-button class="button row-center closeBtn" color="primary" routerLink="/categories">
+              Cancel
+            </button>
+            <button mat-flat-button class="button row-center" color="primary" type="submit"
+                    [disabled]="!categoryAdditionUpdateForm.valid">
+              {{ buttonName }}
+            </button>
+          </div>
+      </form>
+    </div>
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>

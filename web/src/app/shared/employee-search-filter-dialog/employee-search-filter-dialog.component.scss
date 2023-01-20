@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+
+.button-container {
+  min-width: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  height: 6vh;
+  font-family: "proxima-nova";
+  min-width: 6vw;
+  margin: 10px 10px;
+}
+
+.addBtn {
+  background-color: #272829;
+}
+
+
+.mat-icon.buttonIcon {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.addIcon {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.closeBtn {
+  background-color: red;
+}

@@ -1,0 +1,5 @@
+{
+  "keycloakUrl": "http://localhost:9005/",
+  "keycloakRealm": "skills-matrix",
+  "keycloakClientId": "skills-matrix"
+}

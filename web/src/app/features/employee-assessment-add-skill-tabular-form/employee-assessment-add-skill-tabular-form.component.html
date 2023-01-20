@@ -1,0 +1,47 @@
+<div class="container">
+  <mat-card class="card">
+
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Add Skill Assessment</div>
+        <!-- <div class="add-row-container">
+           <button class="row-buttons" mat-raised-button color="primary" (click)="addAnother()">
+            <mat-icon class="buttonIcon assessIcon">add</mat-icon>Skill</button>
+        </div> -->
+        <div class="table-form-header">
+
+          <div class="input-header"><span>Skill</span></div>
+          <div class="text-area-header"><span>Skill Description</span></div>
+          <div class="input-header"><span>Skill Level</span></div>
+          <div class="text-area-header"><span>Comments</span></div>
+
+        </div>
+        <div class="table-form-container">
+          <app-skill-history-add-table-form *ngFor="let skillHistory of SkillHistoryAssessments; let i=index;"
+                                            [skillHistory]="skillHistory" [showDeleteButton]="showDeleteButton()"
+                                            (onDeleteSkillHistory)="deleteSkillHistory($event)"></app-skill-history-add-table-form>
+
+        </div>
+        <div class="buttons">
+          <button mat-flat-button class="button submitBtn ml-2" color="primary" routerLink="/employeeAssessment">
+            Cancel
+          </button>
+          <button class="button submitBtn ml-2" mat-raised-button color="primary" (click)="addAnother()">
+            <mat-icon class="buttonIcon assessIcon">add</mat-icon>
+            Skill
+          </button>
+          <button mat-flat-button class="button submitBtn ml-2" color="primary" (click)="createSkillHistory()"
+          >
+            Submit
+          </button>
+        </div>
+
+      </div>
+
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+
+
+</div>

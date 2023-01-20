@@ -1,0 +1,117 @@
+.container {
+  height: 88vh;
+}
+
+.card {
+  min-height: 84vh;
+  width: 92vw;
+  margin-left: -4vw !important;
+  margin-top: 2.5vh !important;
+  margin-bottom: 18vh !important;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  min-height: 81.5vh;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  margin-top: auto;
+}
+
+
+.wrap {
+  width: 89vw;
+  padding-right: 2vw;
+  padding-left: 2vw;
+  min-height: inherit;
+
+}
+
+.text-title {
+  margin-top: 1.5vh;
+  font-size: 3.45vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+  margin-bottom: 1.5vh !important;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+}
+
+.add-row-container {
+  margin-top: 2vh;
+  width: 100%;
+  height: 6vh;
+}
+
+.button-container {
+  display: grid;
+}
+
+.row-buttons {
+  height: 6vh;
+  font-family: "proxima-nova";
+  min-width: 6vw;
+  float: right;
+  background-color: #272829;
+}
+
+.mat-icon.buttonIcon {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.assessIcon {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.table-form-container {
+  margin-top: 2vh;
+  width: 100%;
+  min-height: 59vh;
+}
+
+.table-form-header {
+  margin-top: 3.5vh;
+  width: 96.25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-header {
+  width: 13vw;
+  color: black;
+  font-weight: bold;
+
+
+}
+
+.text-area-header {
+  width: 25vw;
+  color: black;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 20.5vw;
+  float: right;
+  margin-top: 1.5vh;
+}
+
+.submitBtn {
+  background-color: #272829;
+  height: 6vh;
+  font-family: "proxima-nova"
+}

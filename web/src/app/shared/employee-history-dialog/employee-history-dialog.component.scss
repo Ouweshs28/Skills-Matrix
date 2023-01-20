@@ -1,0 +1,108 @@
+#historyTable {
+  width: 60vw;
+  margin-top: 10px;
+  margin-left: 9px;
+}
+
+#objectiveTable {
+  width: 60vw;
+  margin-top: 10px;
+  margin-left: 9px;
+}
+
+.mat-column-levelRequirements,
+.mat-column-description {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 15% !important;
+  width: 23% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+th.mat-header-cell {
+  color: black;
+  font-weight: bold;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+td.mat-cell {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.mat-cell,
+.mat-header-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-actions {
+  width: 10%;
+}
+
+.table {
+  height: inherit;
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+}
+
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
+}
+
+th {
+  background-color: white;
+  position: fixed;
+}
+
+img {
+  width: 25vw;
+  height: 25vh;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+#headingNoData {
+  text-align: center;
+  padding: 5px 5px;
+}
+
+
+.mat-icon:hover {
+  color: red;
+}
+
+.close-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  float: right;
+  vertical-align: text-bottom;
+}
+
+.mat-dialog-actions {
+  float: right;
+  margin-top: 15px;
+}

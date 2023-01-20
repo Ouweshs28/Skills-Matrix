@@ -1,0 +1,36 @@
+<mat-card class="card card-center">
+  <div class="card-row card-max-height">
+    <div class="accent-border-left"></div>
+    <div class="card-column">
+      <div class="text-title">{{ title }}</div>
+      <img class="card-image card-center" src="../../../assets/images/add-update-domain.svg" alt="domain image"/>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="card-column right">
+      <form [formGroup]="domainAdditionUpdateForm" novalidate class="input-form" (ngSubmit)="checkOperationType()">
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>Domain Name</mat-label>
+          <input matInput placeholder="" [(ngModel)]="domain.name" name="domain.name" formControlName="domainName"/>
+          <mat-error>Domain name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="text-input" appearance="fill">
+          <mat-label>Domain Description</mat-label>
+          <textarea matInput rows="4" style="resize: none" placeholder="" name="skill.description"
+                    [(ngModel)]="domain.description" name="domain.description"
+                    formControlName="domainDescription"></textarea>
+          <mat-error *ngIf="domainAdditionUpdateForm.invalid">Domain description is required</mat-error>
+        </mat-form-field>
+        <div class="button-container">
+          <button mat-flat-button class="button row-center closeBtn" color="primary" routerLink="/domains">
+            Cancel
+          </button>
+          <button mat-flat-button class="button row-center" color="primary" type="submit"
+                  [disabled]="domainAdditionUpdateForm.invalid">
+            {{ buttonName }}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>

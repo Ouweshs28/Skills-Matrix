@@ -1,0 +1,110 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="card-container">
+      <div class="accent-border-left"></div>
+      <div class="wrap">
+        <div class="text-title">Track Progress</div>
+        <div class="employee-list-container">
+          <div class="mat-select-container">
+            <mat-form-field class="input" appearance="fill">
+              <mat-label>Employee</mat-label>
+              <mat-select (selectionChange)="getEmployeeSelected($event)">
+                <input class="search-input" (keyup)="employeeNameOnKeyUp($event)"
+                       [ngModelOptions]="{standalone: true}" [(ngModel)]="searchEmployeeByName" matInput
+                       placeholder="Search...">
+                <mat-option *ngFor="let employee of employeesList" [value]="employee">
+                  {{employee.firstName | titlecase}}</mat-option>
+              </mat-select>
+              <mat-error>Choose an employee</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div *ngIf="!hasSelectedAnEmployeeForProgressTracking" class="tracking-image-container">
+          <img class="card-image-table" src="../../../assets/images/tracking.svg" alt="no tracking image"/>
+        </div>
+        <div *ngIf="hasSelectedAnEmployeeForProgressTracking" class="tab-container">
+          <mat-tab-group mat-align-tabs="center" (selectedTabChange)="tabClick($event)">
+
+            <mat-tab label="Profile">
+              <div class="profile-container">
+                <div class="profile-form">
+                  <table id="main-profile-table">
+                    <td>
+                      <table>
+                        <tr>
+                          <mat-form-field class="input" appearance="fill">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="" value={{employee.firstName}}
+                                   readonly>
+                          </mat-form-field>
+                        </tr>
+                        <tr>
+                          <mat-form-field class="input" appearance="fill">
+                            <mat-label>Gender</mat-label>
+                            <input matInput placeholder="" value={{employee.gender}}
+                                   readonly>
+                          </mat-form-field>
+                        </tr>
+                        <tr>
+                          <mat-form-field class="input" appearance="fill">
+                            <mat-label>Factory</mat-label>
+                            <input matInput placeholder="" value={{employee.factory}}
+                                   readonly>
+                          </mat-form-field>
+                        </tr>
+                        <tr>
+                          <mat-form-field #wawa class="input" appearance="fill">
+                            <mat-label>Position</mat-label>
+                            <input matInput placeholder="" value={{employee.position}}
+                                   readonly>
+                          </mat-form-field>
+                        </tr>
+                      </table>
+                    </td>
+                    <table>
+                      <tr>
+                        <mat-form-field class="input" appearance="fill">
+                          <mat-label>Last Name</mat-label>
+                          <input matInput placeholder="" value={{employee.lastName}} readonly>
+                        </mat-form-field>
+                      </tr>
+                      <tr>
+                        <mat-form-field class="input" appearance="fill">
+                          <mat-label>email</mat-label>
+                          <input matInput placeholder="" value={{employee.email}} readonly>
+                        </mat-form-field>
+                      </tr>
+                      <tr>
+                        <mat-form-field class="input" appearance="fill">
+                          <mat-label>Reporting Manager</mat-label>
+                          <input matInput placeholder="" value={{employee.manager.firstName}}
+                                 readonly>
+                        </mat-form-field>
+                      </tr>
+                      <tr>
+                        <mat-form-field class="input" appearance="fill">
+                          <mat-label>Domain</mat-label>
+                          <input matInput placeholder=""
+                                 value={{employee.employeeDomain.name}} readonly>
+                        </mat-form-field>
+                      </tr>
+                    </table>
+                    <td>
+                    </td>
+                  </table>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Skills">
+              <div id="divChart">
+                <canvas id="myChart"></canvas>
+              </div>
+            </mat-tab>
+
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="accent-border-right"></div>
+    </div>
+  </mat-card>
+</div>

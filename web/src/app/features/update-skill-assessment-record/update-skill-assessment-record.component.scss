@@ -1,0 +1,103 @@
+.container {
+  height: 87vh;
+}
+
+.card {
+  min-height: 78vh;
+  width: 39vw;
+  margin-left: -4.25vw !important;
+  margin-top: 2.5vh !important;
+  margin-bottom: 18vh !important;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.wrap {
+  width: 37vw;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  min-height: inherit;
+}
+
+.text-title {
+  margin-top: 3vh;
+  margin-left: 1vw;
+  font-size: 3.45vh;
+  line-height: 40px;
+  font-family: "proxima-nova-bold";
+  margin-bottom: 25px;
+}
+
+.accent-border-left {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+  margin-top: auto;
+}
+
+.accent-border-right {
+  background-color: #e13616;
+  height: 30vh;
+  width: 5px;
+}
+
+.form-container {
+  display: flex;
+  width: 100%;
+  margin-top: 2%;
+  max-height: 50vh;
+
+}
+
+.column-left {
+  width: 48%;
+  height: 100%;
+
+}
+
+.comments {
+  margin-bottom: 1vh;
+}
+
+.column-right {
+  width: 48%;
+  height: 100%;
+
+}
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.input {
+  width: 100%;
+  height: 10vh;
+}
+
+
+.text-input {
+  width: 100%;
+  height: 12.5vh;
+}
+
+.comments {
+  margin-bottom: 1vh;
+}
+
+.button-container {
+  margin-top: 3vh;
+  width: 40%;
+  float: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: #272829;
+  color: white;
+}

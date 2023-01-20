@@ -1,0 +1,84 @@
+<mat-card class="card card-center">
+  <div class="card-row card-max-height">
+    <div class="accent-border-left"></div>
+    <div class="card-column">
+      <div class="text-title">{{title}}</div>
+      <img class="card-image card-center" src="../../../assets/images/add-skill.svg" alt="skill image"/>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="card-column right">
+      <form [formGroup]="skillAdditionUpdateForm" novalidate class="input-form" (ngSubmit)="checkOperationType()">
+        <table class="card-table">
+          <td vAlign="top">
+            <table>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Name</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="skill.name" name="skill.name"
+                         formControlName="skillName"/>
+                  <mat-error *ngIf="skillAdditionUpdateForm.invalid">SKill name is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Domain</mat-label>
+                  <mat-select [(ngModel)]="skill.employeeDomainId" name="skill.employeeDomainId"
+                              formControlName="skillDomain">
+                    <mat-option *ngFor="let skillDomain of employeeDomainList" [value]="skillDomain.id">{{
+                      skillDomain.name| titlecase }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="skillAdditionUpdateForm.invalid">Skill category is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="input" appearance="fill">
+                  <mat-label>Skill Category</mat-label>
+                  <mat-select [(ngModel)]="skill.skillCategoryId" name="skill.skillCategoryId"
+                              formControlName="skillCategory">
+                    <mat-option *ngFor="let skillCategory of skillCategoryList" [value]="skillCategory.id">{{
+                      skillCategory.name| titlecase }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="skillAdditionUpdateForm.invalid">Skill category is required</mat-error>
+                </mat-form-field>
+              </tr>
+            </table>
+          </td>
+          <td vAlign="top">
+            <table>
+              <tr>
+                <mat-form-field class="text-input" appearance="fill">
+                  <mat-label>Level requirements</mat-label>
+                  <textarea matInput rows="4" style="resize: none" placeholder="" name="skill.levelRequirements"
+                            [(ngModel)]="skill.levelRequirements" name="skill.levelRequirements"
+                            formControlName="skillLevelRequirements"></textarea>
+                  <mat-error *ngIf="skillAdditionUpdateForm.invalid">Level requirement is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <mat-form-field class="text-input" appearance="fill">
+                  <mat-label>Skill Description</mat-label>
+                  <textarea matInput rows="4" style="resize: none" placeholder="" name="skill.description"
+                            [(ngModel)]="skill.description" name="skill.description"
+                            formControlName="skillDescription"></textarea>
+                  <mat-error *ngIf="skillAdditionUpdateForm.invalid">Skill description is required</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr>
+                <div class="button-container">
+                  <button mat-flat-button class="button row-center closeBtn" color="primary" routerLink="/skills">
+                    Cancel
+                  </button>
+                  <button mat-flat-button class="button row-center" color="primary" type="submit"
+                          [disabled]='skillAdditionUpdateForm.invalid'>
+                    {{buttonName}}
+                  </button>
+                </div>
+              </tr>
+            </table>
+          </td>
+        </table>
+      </form>
+    </div>
+    <div class="accent-border-right"></div>
+  </div>
+</mat-card>
