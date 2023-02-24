@@ -1,6 +1,6 @@
 import {APP_INITIALIZER, NgModule, Provider} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -80,7 +80,6 @@ import {
 } from './features/employee-assesment-add-skill/add-skill-level-dialog/add-skill-level-dialog.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {AppConfigService} from "./shared/config/app-config.service";
-import {StateService} from "./shared/services/state/state.service";
 
 export const AppConfigurationFactory = (
   appConfig: AppConfigService) => () => appConfig.loadAppConfig();
@@ -150,9 +149,7 @@ const keycloakProvider: Provider = {
     DocumentsDialogComponent,
     EmployeeAssesmentAddSkillComponent,
     AddSkillLevelDialogComponent
-
   ],
-  entryComponents: [WarningDialogComponent, DeclinedCommentsDialogComponent, SetTargetDateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -189,7 +186,6 @@ const keycloakProvider: Provider = {
     MatDatepickerModule,
     MatNativeDateModule,
     KeycloakAngularModule,
-
   ],
   providers: [
     AppConfigService,
