@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {SetTargetDateComponent} from 'src/app/features/my-employee-skills/set-target-date/set-target-date.component';
 import {SkillLevel, SkillResponse} from '../../model/model';
 

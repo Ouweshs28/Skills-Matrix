@@ -1,15 +1,15 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
 import {SkillHistoryCreateRequest, SkillResponse} from "../../shared/model/model";
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {SkillApiService} from "../../shared/services/api/skill/skill-api.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatLegacyTableDataSource as MatTableDataSource} from "@angular/material/legacy-table";
 import {SelectionModel} from "@angular/cdk/collections";
 import {AddSkillLevelModalService} from "../../shared/services/add-skill-level-modal/add-skill-level-modal.service";
 import {ToastrService} from "ngx-toastr";
 import {EmployeeApiService} from "../../shared/services/api/employee/employee-api.service";
 import {WarningDialogComponent} from "../../shared/warning-dialog/warning-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 
 @Component({
   selector: 'app-employee-assesment-add-skill',

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SkillHistoryResponse, SkillLevel, SkillObjectiveResponse, SkillStatus} from "../model/model";
 import {Params, Router} from "@angular/router";
 import {EmployeeApiService} from "../services/api/employee/employee-api.service";
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 
 @Component({
   selector: 'app-dashboard',

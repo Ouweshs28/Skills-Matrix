@@ -1,7 +1,7 @@
 import {AfterContentInit, Component, ViewChild} from '@angular/core';
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {EmployeeApiService} from "../../shared/services/api/employee/employee-api.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatLegacyTableDataSource as MatTableDataSource} from "@angular/material/legacy-table";
 import {SkillLevel, SkillObjectiveResponse, SkillObjectiveStatus} from "../../shared/model/model";
 import {MatSort} from "@angular/material/sort";
 import {ActivatedRoute, Params, Router} from "@angular/router";

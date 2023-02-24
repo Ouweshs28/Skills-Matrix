@@ -1,9 +1,13 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {
+  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+  MatLegacyDialog as MatDialog,
+  MatLegacyDialogRef as MatDialogRef
+} from "@angular/material/legacy-dialog";
 import {EmployeeDomainResponse, Factory, SkillLevel} from "../model/model";
 import {EmployeeApiService} from "../services/api/employee/employee-api.service";
 import {SkillApiService} from "../services/api/skill/skill-api.service";
-import {MatTable} from "@angular/material/table";
+import {MatLegacyTable as MatTable} from "@angular/material/legacy-table";
 import {
   EmployeeSearchAddSkillLevelDialogComponent
 } from "../employee-search-add-skill-level-dialog/employee-search-add-skill-level-dialog.component";

@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
+import {LegacyPageEvent as PageEvent} from '@angular/material/legacy-paginator';
 import {MatSort} from '@angular/material/sort';
 import {EmployeeResponse, SkillHistoryResponse, SkillLevel} from 'src/app/shared/model/model';
 import {EmployeeApiService} from 'src/app/shared/services/api/employee/employee-api.service';
-import {MatTableDataSource} from "@angular/material/table";
+import {MatLegacyTableDataSource as MatTableDataSource} from "@angular/material/legacy-table";
 import {Router} from "@angular/router";
 import {StateService} from "../../shared/services/state/state.service";
 import {ManagerApiService} from "../../shared/services/api/manager/manager-api.service";

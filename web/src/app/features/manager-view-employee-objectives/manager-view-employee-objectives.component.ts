@@ -1,5 +1,5 @@
-import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
+import {AfterContentInit, Component, ViewChild} from '@angular/core';
+import {LegacyPageEvent as PageEvent} from '@angular/material/legacy-paginator';
 import {
   ManagerResponse,
   SkillLevel,
@@ -9,7 +9,7 @@ import {
 } from 'src/app/shared/model/model';
 import {EmployeeApiService} from 'src/app/shared/services/api/employee/employee-api.service';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {ToastrService} from 'ngx-toastr';
 import {ManagerApiService} from "../../shared/services/api/manager/manager-api.service";
 import {StateService} from "../../shared/services/state/state.service";

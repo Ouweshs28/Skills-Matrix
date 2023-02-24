@@ -3,14 +3,14 @@ import {EmployeeDomainResponse, EmploymentPosition, Factory} from "../../shared/
 import {EmployeeApiService} from "../../shared/services/api/employee/employee-api.service";
 import {SkillApiService} from "../../shared/services/api/skill/skill-api.service";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatLegacyTableDataSource as MatTableDataSource} from "@angular/material/legacy-table";
 import {MatSort} from "@angular/material/sort";
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {Params, Router} from "@angular/router";
 import {
   EmployeeSearchFilterDialogComponent
 } from "../../shared/employee-search-filter-dialog/employee-search-filter-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {HttpParams} from "@angular/common/http";
 import {ManagerApiService} from "../../shared/services/api/manager/manager-api.service";
 

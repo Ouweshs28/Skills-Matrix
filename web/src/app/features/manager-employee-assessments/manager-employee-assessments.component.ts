@@ -11,8 +11,8 @@ import {
 } from 'src/app/shared/model/model';
 import {EmployeeApiService} from 'src/app/shared/services/api/employee/employee-api.service';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {PageEvent} from '@angular/material/paginator';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
+import {LegacyPageEvent as PageEvent} from '@angular/material/legacy-paginator';
 import {ToastrService} from 'ngx-toastr';
 import {CommentModalService} from 'src/app/shared/services/comment-modal/comment-modal.service';
 import {UtilServiceService} from 'src/app/shared/services/util/util-service.service';

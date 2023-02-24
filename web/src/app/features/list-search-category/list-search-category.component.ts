@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SkillCategoryResponse} from 'src/app/shared/model/model';
 import {SkillApiService} from '../../shared/services/api/skill/skill-api.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {WarningDialogComponent} from 'src/app/shared/warning-dialog/warning-dialog.component';
-import {MatTableDataSource} from '@angular/material/table';
-import {PageEvent} from '@angular/material/paginator';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
+import {LegacyPageEvent as PageEvent} from '@angular/material/legacy-paginator';
 import {MatSort} from '@angular/material/sort';
 import {Workbook} from 'exceljs';
 import * as fs from 'file-saver';

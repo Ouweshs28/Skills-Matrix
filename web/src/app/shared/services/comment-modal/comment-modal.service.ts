@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {
   DeclinedCommentsDialogComponent
 } from 'src/app/features/manager-employee-assessments/declined-comments-dialog/declined-comments-dialog.component';

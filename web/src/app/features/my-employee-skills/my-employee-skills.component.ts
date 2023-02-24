@@ -1,10 +1,10 @@
-import {AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatLegacyTableDataSource as MatTableDataSource} from "@angular/material/legacy-table";
 import {EmployeeApiService} from "../../shared/services/api/employee/employee-api.service";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {EmployeeHistoryDialogComponent} from "../../shared/employee-history-dialog/employee-history-dialog.component";
 import {
   EmployeeSkillResponse,
