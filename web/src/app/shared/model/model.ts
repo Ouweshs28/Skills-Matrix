@@ -244,10 +244,12 @@ export class EventData {
 }
 
 
-import {Enum, EnumType} from "ts-jenum";
+export class EmploymentPosition {
 
-@Enum("label")
-export class EmploymentPosition extends EnumType<EmploymentPosition>() {
+  static fromLabel(label: string | null | undefined): EmploymentPosition | undefined {
+    if (!label) return undefined;
+    return <EmploymentPosition>this[label as keyof typeof EmploymentPosition];
+  }
 
   static readonly BA_ASSOCIATE_BA = new EmploymentPosition(1, "Associate Business Analyst");
   static readonly BA_SENIOR_BA = new EmploymentPosition(2, "Senior Business Analyst");
@@ -268,35 +270,35 @@ export class EmploymentPosition extends EnumType<EmploymentPosition>() {
   static readonly QA_QA = new EmploymentPosition(17, "QA");
   static readonly QA_SENIOR_QA = new EmploymentPosition(18, "Senior QA");
 
-  private constructor(readonly code: number, readonly label: string) {
-    super();
-  }
+  code: number;
+  label: string;
 
+  private constructor(code: number, label: string) {
+    this.code = code;
+    this.label = label;
+
+
+  }
 }
 
-@Enum("label")
-export class Factory extends EnumType<Factory>() {
 
+export class Factory {
   static readonly ENGINEERING = new Factory(1, "Engineering");
   static readonly IPENSION = new Factory(2, "iPension");
 
-  private constructor(readonly code: number, readonly label: string) {
-    super();
+  constructor(readonly code: number, readonly label: string) {
   }
 }
 
-@Enum("label")
-export class SkillLevel extends EnumType<SkillLevel>() {
+export class SkillLevel {
   static readonly P0 = new SkillLevel(1, 'Novice');
   static readonly P1 = new SkillLevel(2, 'Beginner');
   static readonly P2 = new SkillLevel(3, 'Proficient');
   static readonly P3 = new SkillLevel(4, 'Advanced');
   static readonly P4 = new SkillLevel(5, 'Expert');
 
-  private constructor(readonly code: number, readonly label: string) {
-    super();
+  constructor(readonly code: number, readonly label: string) {
   }
-
 }
 
 export interface AppConfigModel {

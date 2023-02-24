@@ -22,7 +22,7 @@
         <mat-select [(ngModel)]="level" formControlName="level">
           <mat-option
             *ngFor="let skillLevel of skillLevelList"
-            [value]="skillLevel.enumName"
+            [value]="skillLevel.label"
           >{{ skillLevel.label }}</mat-option>
         </mat-select>
         <mat-error *ngIf="skillLevelAdditionForm.invalid">Level is required</mat-error>

@@ -179,10 +179,9 @@ export class TrackingProgressComponent implements AfterContentInit {
     }
   }
 
-  private getChartSkillLevelCode(skillLevelStringIdentifier: string): number {
-    let skillLevelObtained: SkillLevel[];
-    skillLevelObtained = this.skillLevelList.filter((obj) => obj.enumName == skillLevelStringIdentifier);
-    return skillLevelObtained[0].code;
+  private getChartSkillLevelCode(skillLevelLabel: string): number {
+    const skillLevelObtained = this.skillLevelList.find(obj => obj.label === skillLevelLabel);
+    return skillLevelObtained?.code ?? 0;
   }
 
   onClose() {

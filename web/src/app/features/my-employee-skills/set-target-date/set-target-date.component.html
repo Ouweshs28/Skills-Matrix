@@ -16,7 +16,7 @@
           <mat-form-field class="input" appearance="fill">
             <mat-label>Skill Level</mat-label>
             <mat-select [(ngModel)]="data.objective.targetSkillLevel" formControlName="skillLevelField">
-              <mat-option *ngFor="let skillLevel of skillLevelList" [value]="skillLevel.enumName">{{
+              <mat-option *ngFor="let skillLevel of skillLevelList" [value]="skillLevel.label">{{
                 skillLevel.label|
                   titlecase }}</mat-option>
             </mat-select>

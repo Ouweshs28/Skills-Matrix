@@ -1,11 +1,9 @@
-import {AfterContentInit, AfterViewInit, Component, NgZone, OnInit} from '@angular/core';
-import {EmploymentPosition} from "./shared/model/model";
+import {AfterContentInit, Component, NgZone} from '@angular/core';
 import {EmployeeApiService} from "./shared/services/api/employee/employee-api.service";
 import {StateService} from "./shared/services/state/state.service";
-import {Subscription} from "rxjs";
-import {EventBusService} from "./shared/event-bus/event-bus.service";
 import {KeycloakService} from "keycloak-angular";
 import {Router} from "@angular/router";
+import {EmploymentPosition} from "./shared/model/model";
 
 @Component({
   selector: 'app-root',
@@ -21,9 +19,9 @@ export class AppComponent implements AfterContentInit {
   };
 
   temp: any;
-  PostionEnum: any = EmploymentPosition;
   public isUserLoggedIn!: boolean;
 
+  employmentPosition = EmploymentPosition;
   constructor(private employeeServiceApi: EmployeeApiService,
               private router: Router,
               private ngZone: NgZone,

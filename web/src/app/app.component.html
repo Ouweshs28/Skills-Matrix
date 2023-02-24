@@ -34,7 +34,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <h5 class="heading-three mt-2">{{user.name}}</h5>
-    <span class="heading-four-thin ngt-10 ">{{PostionEnum[user.position]}}</span>
+    <span class="heading-four-thin ngt-10">{{employmentPosition.fromLabel(user.position)?.label}}</span>
     <mat-divider></mat-divider>
     <button mat-button class="menu-button" routerLink="/dashboard" (click)="sidenav.toggle()">
       <mat-icon>home</mat-icon>

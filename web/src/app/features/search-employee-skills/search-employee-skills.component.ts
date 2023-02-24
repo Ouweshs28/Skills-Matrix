@@ -26,7 +26,7 @@ export class SearchEmployeeSkillsComponent implements OnInit {
   public factory: string = "";
   public skillLevels = [];
   public domains = [];
-  public factoryList: string[] = Factory.keys();
+  public factoryList: string[] = Object.keys(Factory);
   public PositionEnum: any = EmploymentPosition;
   // @ts-ignore
   public employeeDomainList: EmployeeDomainResponse[] = [];

@@ -22,7 +22,7 @@ export class EmployeeSearchFilterDialogComponent implements OnInit {
   skillLevel: string = "";
   domains: [];
   skills = []
-  factoryList: string[] = Factory.keys();
+  public factoryList: string[] = Object.keys(Factory);
   // @ts-ignore
   skillLevelList: string[] = SkillLevel.values().map(k => SkillLevel.valueOf(k).label);
   employeeDomainList: EmployeeDomainResponse[] = [];

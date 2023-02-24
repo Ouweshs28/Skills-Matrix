@@ -22,11 +22,12 @@ import {StateService} from "../../shared/services/state/state.service";
 })
 export class CreateUpdateEmployeeComponent implements AfterContentInit {
 
+
   public employeeAdditionForm: UntypedFormGroup;
   public genderList: string[] = Object.values(Gender).map(k => Gender[k]);
   public employeeDomainList: EmployeeDomainResponse[] = [];
   public managerList: ManagerResponse[] = [];
-  public factoryList: string[] = Factory.keys();
+  public factoryList: string[] = Object.keys(Factory);
   // @ts-ignore
   public positionList: EmploymentPosition[] = EmploymentPosition.values();
   public employee!: any;

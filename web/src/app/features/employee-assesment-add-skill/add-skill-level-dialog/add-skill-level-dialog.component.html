@@ -3,9 +3,9 @@
                                                                       (click)="onNoClick()"><mat-icon>close</mat-icon></button></span>
 </div>
 <mat-label class="mat-typography">
-  <button [ngStyle]="{'background-color':data.skillHistory.skillLevel === skillLevel.enumName ? 'green' : ''}"
+  <button [ngStyle]="{'background-color':data.skillHistory.skillLevel === skillLevel.label ? 'green' : ''}"
           class="addBtn buttons"
-          (click)="addSkill(skillLevel.enumName)"
+          (click)="addSkill(skillLevel.label)"
           *ngFor="let skillLevel of skillLevelList"
           mat-button
           [mat-dialog-close]="data"
