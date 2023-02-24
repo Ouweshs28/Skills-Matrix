@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {SkillHistoryCreateRequest, SkillLevel, SkillResponse,} from 'src/app/shared/model/model';
 import {EmployeeApiService} from 'src/app/shared/services/api/employee/employee-api.service';
 import {ToastrService} from 'ngx-toastr';
@@ -16,7 +16,7 @@ import {UtilServiceService} from 'src/app/shared/services/util/util-service.serv
 })
 export class EmployeeAssessmentAddSkillTabularFormComponent implements OnInit {
 
-  public addNewAssessmentSkill!: FormGroup;
+  public addNewAssessmentSkill!: UntypedFormGroup;
   public skillNameList!: SkillResponse[];
   public skillDescription!: string;
   public skillCategory!: string;
@@ -35,7 +35,7 @@ export class EmployeeAssessmentAddSkillTabularFormComponent implements OnInit {
     private toastr: ToastrService,
     private employeeApiService: EmployeeApiService,
     private skillApiService: SkillApiService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private utilsService: UtilServiceService,
   ) {

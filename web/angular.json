@@ -110,5 +110,7 @@
       }
     }
   },
-  "defaultProject": "skillMatrixFE"
+  "cli": {
+    "analytics": false
+  }
 }

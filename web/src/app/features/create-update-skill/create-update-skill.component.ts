@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {EmployeeDomainResponse, SkillCategoryResponse, SkillCreateOrUpdateRequest,} from 'src/app/shared/model/model';
 import {SkillApiService} from '../../shared/services/api/skill/skill-api.service';
 import {ToastrService} from 'ngx-toastr';
@@ -12,11 +12,11 @@ import {AdminApiService} from "../../shared/services/api/admin/admin-api.service
   styleUrls: ['./create-update-skill.component.scss'],
 })
 export class CreateUpdateSkillComponent implements OnInit {
-  public skillAdditionUpdateForm!: FormGroup;
+  public skillAdditionUpdateForm!: UntypedFormGroup;
   public employeeDomainList: EmployeeDomainResponse[] = [];
   public skillCategoryList: SkillCategoryResponse[] = [];
   public skill!: any;
-  public domains = new FormControl();
+  public domains = new UntypedFormControl();
   public title!: String;
   public buttonName!: String;
   public skillId!: number;
@@ -64,21 +64,21 @@ export class CreateUpdateSkillComponent implements OnInit {
   }
 
   private initialiseSkillAdditionForm(): void {
-    this.skillAdditionUpdateForm = new FormGroup({
-      skillName: new FormControl(null, [
+    this.skillAdditionUpdateForm = new UntypedFormGroup({
+      skillName: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('[a-zA-Z ]*'),
       ]),
-      skillLevelRequirements: new FormControl(null, [
+      skillLevelRequirements: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('^[.a-zA-Z0-9, ]*$'),
       ]),
-      skillDescription: new FormControl(null, [
+      skillDescription: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('^[.a-zA-Z0-9, ]*$'),
       ]),
-      skillDomain: new FormControl(null, Validators.required),
-      skillCategory: new FormControl(null, Validators.required),
+      skillDomain: new UntypedFormControl(null, Validators.required),
+      skillCategory: new UntypedFormControl(null, Validators.required),
     });
   }
 

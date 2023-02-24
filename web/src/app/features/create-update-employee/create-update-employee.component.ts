@@ -1,5 +1,5 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AfterContentInit, Component} from '@angular/core';
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {
   EmployeeCreateOrUpdateRequest,
   EmployeeDomainResponse,
@@ -22,7 +22,7 @@ import {StateService} from "../../shared/services/state/state.service";
 })
 export class CreateUpdateEmployeeComponent implements AfterContentInit {
 
-  public employeeAdditionForm: FormGroup;
+  public employeeAdditionForm: UntypedFormGroup;
   public genderList: string[] = Object.values(Gender).map(k => Gender[k]);
   public employeeDomainList: EmployeeDomainResponse[] = [];
   public managerList: ManagerResponse[] = [];
@@ -30,7 +30,7 @@ export class CreateUpdateEmployeeComponent implements AfterContentInit {
   // @ts-ignore
   public positionList: EmploymentPosition[] = EmploymentPosition.values();
   public employee!: any;
-  public domains = new FormControl();
+  public domains = new UntypedFormControl();
   public title!: String;
   public buttonName!: String;
   public employeeId!: number;
@@ -166,26 +166,26 @@ export class CreateUpdateEmployeeComponent implements AfterContentInit {
 
   private initForm(): void {
     if (this.isUpdate) {
-      this.employeeAdditionForm = new FormGroup({
-        firstName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-        lastName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-        gender: new FormControl(null, Validators.required),
-        email: new FormControl(null, [Validators.required, Validators.email]),
-        factory: new FormControl(null, Validators.required),
-        manager: new FormControl(null,),
-        position: new FormControl(null, Validators.required),
-        employeeDomainId: new FormControl(null),
+      this.employeeAdditionForm = new UntypedFormGroup({
+        firstName: new UntypedFormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+        lastName: new UntypedFormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+        gender: new UntypedFormControl(null, Validators.required),
+        email: new UntypedFormControl(null, [Validators.required, Validators.email]),
+        factory: new UntypedFormControl(null, Validators.required),
+        manager: new UntypedFormControl(null,),
+        position: new UntypedFormControl(null, Validators.required),
+        employeeDomainId: new UntypedFormControl(null),
       });
     } else {
-      this.employeeAdditionForm = new FormGroup({
-        firstName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-        lastName: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-        gender: new FormControl(null, Validators.required),
-        email: new FormControl(null, [Validators.required, Validators.email]),
-        factory: new FormControl(null, Validators.required),
-        manager: new FormControl(null,),
-        position: new FormControl(null, Validators.required),
-        visa: new FormControl(null, Validators.required),
+      this.employeeAdditionForm = new UntypedFormGroup({
+        firstName: new UntypedFormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+        lastName: new UntypedFormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+        gender: new UntypedFormControl(null, Validators.required),
+        email: new UntypedFormControl(null, [Validators.required, Validators.email]),
+        factory: new UntypedFormControl(null, Validators.required),
+        manager: new UntypedFormControl(null,),
+        position: new UntypedFormControl(null, Validators.required),
+        visa: new UntypedFormControl(null, Validators.required),
       });
 
     }

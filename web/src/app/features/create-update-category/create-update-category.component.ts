@@ -1,5 +1,5 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AfterContentInit, Component} from '@angular/core';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {SkillCategoryCreateOrUpdateRequest} from 'src/app/shared/model/model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -18,7 +18,7 @@ export class CreateUpdateCategoryComponent implements AfterContentInit {
   public buttonName!: String;
   public categoryId!: number;
   public isUpdate!: Boolean;
-  public categoryAdditionUpdateForm!: FormGroup;
+  public categoryAdditionUpdateForm!: UntypedFormGroup;
   public currentUserSessionId!: number;
 
 
@@ -47,12 +47,12 @@ export class CreateUpdateCategoryComponent implements AfterContentInit {
   }
 
   private initialiseCategoryAdditionUpdateForm(): void {
-    this.categoryAdditionUpdateForm = new FormGroup({
-      categoryName: new FormControl(null, [
+    this.categoryAdditionUpdateForm = new UntypedFormGroup({
+      categoryName: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('[a-zA-Z/., ]*'),
       ]),
-      categoryDescription: new FormControl(null, [
+      categoryDescription: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('[a-zA-Z/.,0-9- ]*'),
       ]),

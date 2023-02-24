@@ -2,7 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, Optional} f
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SkillLevel, SkillResponse} from "../model/model";
 import {SkillApiService} from "../services/api/skill/skill-api.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-employee-search-add-skill-level-dialog',
@@ -10,7 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./employee-search-add-skill-level-dialog.component.scss']
 })
 export class EmployeeSearchAddSkillLevelDialogComponent implements OnInit, AfterViewInit {
-  public skillLevelAdditionForm: FormGroup;
+  public skillLevelAdditionForm: UntypedFormGroup;
   action: string;
   local_data: any;
   skill = {
@@ -122,14 +122,14 @@ export class EmployeeSearchAddSkillLevelDialogComponent implements OnInit, After
 
   private initForm(action: string): void {
     if (action !== "Delete") {
-      this.skillLevelAdditionForm = new FormGroup({
-        skill: new FormControl(null, Validators.required),
-        level: new FormControl(null, Validators.required),
+      this.skillLevelAdditionForm = new UntypedFormGroup({
+        skill: new UntypedFormControl(null, Validators.required),
+        level: new UntypedFormControl(null, Validators.required),
       });
     } else {
-      this.skillLevelAdditionForm = new FormGroup({
-        skill: new FormControl(null),
-        level: new FormControl(null,),
+      this.skillLevelAdditionForm = new UntypedFormGroup({
+        skill: new UntypedFormControl(null),
+        level: new UntypedFormControl(null,),
       });
     }
   }

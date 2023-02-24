@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {SkillHistoryCreateRequest, SkillLevel, SkillResponse} from 'src/app/shared/model/model';
 import {SkillApiService} from 'src/app/shared/services/api/skill/skill-api.service';
 
@@ -13,7 +13,7 @@ export class SkillHistoryAddTableFormComponent implements OnInit {
   @Input() skillHistory!: SkillHistoryCreateRequest;
   @Input() showDeleteButton: boolean;
   @Output() onDeleteSkillHistory: EventEmitter<string> = new EventEmitter();
-  public addNewAssessmentSkill!: FormGroup;
+  public addNewAssessmentSkill!: UntypedFormGroup;
   public skillNameList: SkillResponse[] = [];
   public searchValueSkill!: string;
   //@ts-ignore
@@ -29,7 +29,7 @@ export class SkillHistoryAddTableFormComponent implements OnInit {
     existingSkill: null
   };
 
-  constructor(private formBuilder: FormBuilder, private skillApiService: SkillApiService) {
+  constructor(private formBuilder: UntypedFormBuilder, private skillApiService: SkillApiService) {
   }
 
   ngOnInit(): void {

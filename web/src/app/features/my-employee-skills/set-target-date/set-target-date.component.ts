@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {SkillLevel, SkillResponse} from 'src/app/shared/model/model';
 
@@ -24,7 +24,7 @@ export class SetTargetDateComponent implements OnInit {
   public currentLevel: String;
   SkillLevelEnum: any = SkillLevel;
   public chosenTargetDate!: Date;
-  public targetFrom: FormGroup;
+  public targetFrom: UntypedFormGroup;
   public minDate: Date = new Date();
   public dialogTitle: string;
 
@@ -53,9 +53,9 @@ export class SetTargetDateComponent implements OnInit {
 
   private initialiseForm(): void {
 
-    this.targetFrom = new FormGroup({
-      skillLevelField: new FormControl(null, [Validators.required]),
-      targetDateField: new FormControl(null, [Validators.required]),
+    this.targetFrom = new UntypedFormGroup({
+      skillLevelField: new UntypedFormControl(null, [Validators.required]),
+      targetDateField: new UntypedFormControl(null, [Validators.required]),
 
     })
 

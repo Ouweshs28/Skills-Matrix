@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {
   SkillHistoryCreateRequest,
   SkillHistoryResponse,
@@ -20,7 +20,7 @@ import {StateService} from "../../shared/services/state/state.service";
 })
 
 export class UpdateSkillAssessmentRecordComponent implements OnInit {
-  public updateAssessmentSkill!: FormGroup;
+  public updateAssessmentSkill!: UntypedFormGroup;
   public skillLevelValue!: any;
   public skillDescription!: string;
   public skillCategory!: string;
@@ -38,7 +38,7 @@ export class UpdateSkillAssessmentRecordComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private employeeApiService: EmployeeApiService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private location: Location,
     private stateService: StateService

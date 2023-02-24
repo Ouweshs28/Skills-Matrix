@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {EmployeeDomainCreateOrUpdateRequest} from 'src/app/shared/model/model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {AdminApiService} from "../../shared/services/api/admin/admin-api.service
 })
 
 export class CreateUpdateDomainComponent implements OnInit {
-  public domainAdditionUpdateForm!: FormGroup;
+  public domainAdditionUpdateForm!: UntypedFormGroup;
   public domain!: any;
   public title!: String;
   public buttonName!: String;
@@ -49,12 +49,12 @@ export class CreateUpdateDomainComponent implements OnInit {
   }
 
   private initialiseDomainAdditionUpdateForm(): void {
-    this.domainAdditionUpdateForm = new FormGroup({
-      domainName: new FormControl(null, [
+    this.domainAdditionUpdateForm = new UntypedFormGroup({
+      domainName: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('[a-zA-Z/., ]*'),
       ]),
-      domainDescription: new FormControl(null, [
+      domainDescription: new UntypedFormControl(null, [
         Validators.required,
         Validators.pattern('[a-zA-Z/.,0-9- ]*'),
       ]),
