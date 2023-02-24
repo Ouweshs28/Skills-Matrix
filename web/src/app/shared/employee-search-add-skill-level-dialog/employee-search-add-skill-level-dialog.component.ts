@@ -76,7 +76,7 @@ export class EmployeeSearchAddSkillLevelDialogComponent implements OnInit, After
       keyword: null,
       existingSkill: existingSkillIds
     }
-    if (existingSkillIds == []) {
+    if (existingSkillIds?.length === 0) {
       this.skillServiceApi.searchSkills(params).subscribe(result => {
           this.skillsList = [];
           this.skillsList = result.content;
