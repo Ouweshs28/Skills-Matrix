@@ -29,7 +29,7 @@ export class CreateUpdateEmployeeComponent implements AfterContentInit {
   public managerList: ManagerResponse[] = [];
   public factoryList: string[] = Object.keys(Factory);
   // @ts-ignore
-  public positionList: EmploymentPosition[] = EmploymentPosition.values();
+  public positionList: string[] = Object.values(EmploymentPosition).map(k => EmploymentPosition[k]);
   public employee!: any;
   public domains = new UntypedFormControl();
   public title!: String;
